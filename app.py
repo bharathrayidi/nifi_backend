@@ -103,7 +103,7 @@ def get_next_weekday(start_date: datetime, weekday: int) -> datetime:
     """
     days_ahead = weekday - start_date.weekday()
     if days_ahead <= 0:
-        days_ahead += 7
+        days_ahead += 6
     return start_date + timedelta(days=days_ahead)
 
 def format_date_for_nse_internal(dt: datetime) -> str:
@@ -522,4 +522,5 @@ async def get_nifty_data():
     except Exception as e:
         print(f"An unexpected error occurred during live data processing: {e}")
         traceback.print_exc()
+
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred while processing data: {e}")
